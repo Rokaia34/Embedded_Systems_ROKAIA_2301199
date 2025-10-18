@@ -1,0 +1,8 @@
+﻿Part,Description,Quantity,Manufacturer,Part Number,Datasheet,Price (EGP),Total Price (EGP)
+Arduino Uno,Arduino Uno Rev3,1,Arduino.cc,A000066,https://docs.arduino.cc/resources/datasheets/A000066-datasheet.pdf,360,360
+LED,"Blue LED, 5mm",1,Generic,WW05A3SBQ4-N ,https://descargas.cetronic.es/WW05A3SBQ4-N.pdf,1,1
+Resistor,"220 Ohm, 0.25W",1,Generic,DTO025C250R0FRE3,https://www.farnell.com/datasheets/3436052.pdf,0.05,0.05
+Switch,Tactile Push Button Switch,1,Generic,MCDTS2-4,https://www.farnell.com/datasheets/1662341.pdf,0.1,0.1
+Jumper Wires,Male-to-Male,4,Generic,MP006282,https://www.farnell.com/datasheets/3178883.pdf,2,8
+Breadboard ,"Full-size solderless breadboard, 830 tie points",1,Generic,ASS1004,https://handsontec.com/dataspecs/accessory/Breadboard-Full.pdf,40,40
+USB Cable,"USB Type a to USB Type B Cable Assembly, 1m",1,Generic,SPC4798,http://farnell.com/datasheets/2310801.pdf,35,35
