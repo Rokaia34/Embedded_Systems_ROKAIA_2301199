@@ -1,0 +1,9 @@
+﻿Part,Description,Quantity,Manufacturer,Part Number,Datasheet,Price (EGP),Total Price (EGP)
+Microcontroller,ATmega328P Microcontroller,1,Microchip Technology,ATmega328P,https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf,5,5
+RS232 Driver,MAX232 Dual Driver/Receiver,1,Analog Devices,MAX232,https://www.ti.com/lit/ds/symlink/max232.pdf?ts=1760748489557&ref_url=https%253A%252F%252Fwww.google.com%252F,2,2
+LED,"Red LED, 5mm",1,Generic,WW05A3SBQ4-N,https://descargas.cetronic.es/WW05A3SBQ4-N.pdf,0.1,0.1
+Resistor,"220 Ohm, 0.25W",1,Generic,DTO025C250R0FRE3,https://www.farnell.com/datasheets/3436052.pdf,0.05,0.05
+Switch,Tactile Push Button Switch,1,Generic,MCDTS2-4,https://www.farnell.com/datasheets/1662341.pdf,0.1,0.1
+Jumper Wires,Male-to-Female Jumper Wires,Several,Generic,MP006282,https://www.farnell.com/datasheets/3178883.pdf,2,10
+Crystal Oscillator,16MHz Crystal Oscillator,1,Generic,-,https://www.mouser.com/datasheet/2/122/hc_49usx-791.pdf?srsltid=AfmBOoqFOOpHGQI7Q7lPEZ-EfsexkeWJTpbI0wzesaplf1iQGc5VdGS7,0.5,0.5
+Capacitors,"10uF, 16V Electrolytic Capacitors",2,Generic,-,https://organization.soe.ucsc.edu/sites/default/files/capacitors.pdf,0.1,0.2
