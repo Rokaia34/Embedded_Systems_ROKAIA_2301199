@@ -16,7 +16,7 @@ The main goal of this project is to understand how UART is used in embedded syst
 [Embedded_Systems_ROKAIA_2301199](https://github.com/Rokaia34/Embedded_Systems_ROKAIA_2301199)
 
 **Local Root Directory:**
-[`Embedded_Systems_CW1_ROKAIA`](./Embedded_Systems_CW1_ROKAIA/)
+[`Embedded_Systems_CW1_ROKAIA`](C:\Users\rokia\Documents\PlatformIO\Projects\Embedded_Systems_CW1_ROKAIA)
 
 ---
 
