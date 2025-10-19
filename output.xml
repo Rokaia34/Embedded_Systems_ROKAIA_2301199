@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.0 on win32)" generated="2025-10-19T13:20:23.803264" rpa="false" schemaversion="5">
+<suite id="s1" name="Uart Tests" source="C:\Users\rokia\Documents\PlatformIO\Projects\Embedded_Systems_CW1_ROKAIA\tests\uart_tests.robot">
+<test id="s1-t1" name="Case1_Button_Transmission" line="17">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.834438" level="INFO">${data_sent} = button_pressed</msg>
+<var>${data_sent}</var>
+<arg>${EXPECTED_BUTTON_PRESS}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.834261" elapsed="0.000207"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data_sent}</arg>
+<arg>${EXPECTED_BUTTON_PRESS}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.834708" elapsed="0.000172"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.835147" level="INFO">${data_sent} = button_released</msg>
+<var>${data_sent}</var>
+<arg>${EXPECTED_BUTTON_RELEASE}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.835033" elapsed="0.000134"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data_sent}</arg>
+<arg>${EXPECTED_BUTTON_RELEASE}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.835304" elapsed="0.000133"/>
+</kw>
+<doc>This test simulates the UART transmission from the microcontroller to the PC
+when a push button is pressed and released. It ensures that the correct
+strings ("button_pressed" and "button_released") are sent through UART.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.833409" elapsed="0.002174"/>
+</test>
+<test id="s1-t2" name="Case2_LED_Command_Reception" line="26">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.836854" level="INFO">${response} = LED turned ON</msg>
+<var>${response}</var>
+<arg>${EXPECTED_LED_ON}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.836723" elapsed="0.000152"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response}</arg>
+<arg>LED turned ON</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.837163" elapsed="0.000152"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.837675" level="INFO">${response} = LED turned OFF</msg>
+<var>${response}</var>
+<arg>${EXPECTED_LED_OFF}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.837533" elapsed="0.000164"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response}</arg>
+<arg>LED turned OFF</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.837912" elapsed="0.000119"/>
+</kw>
+<doc>This test verifies that the UART correctly receives and interprets commands
+from the PC to control the LED. It checks that valid commands like
+"LED turned ON" and "LED turned OFF" are properly recognized and processed.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.836212" elapsed="0.001967"/>
+</test>
+<test id="s1-t3" name="Case3_Invalid_Command" line="35">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.839681" level="INFO">${command} = invalid_data</msg>
+<var>${command}</var>
+<arg>invalid_data</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.839565" elapsed="0.000138"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.839986" level="INFO">${response} = ERROR: Unknown command</msg>
+<var>${response}</var>
+<arg>${EXPECTED_ERROR}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.839877" elapsed="0.000126"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response}</arg>
+<arg>ERROR</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.840145" elapsed="0.000094"/>
+</kw>
+<doc>This test checks how the system responds to an invalid or corrupted UART command.
+It ensures that any unrecognized command results in an appropriate error message
+instead of causing unexpected behavior or crashes.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.838920" elapsed="0.001464"/>
+</test>
+<test id="s1-t4" name="Case4_Baud_Rate_Check" line="43">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.841546" level="INFO">${baud} = 9600</msg>
+<var>${baud}</var>
+<arg>${EXPECTED_BAUD}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.841438" elapsed="0.000130"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${baud}</arg>
+<arg>9600</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.841754" elapsed="0.000107"/>
+</kw>
+<doc>This test validates that the UART module is configured with the correct
+communication baud rate (9600 bps), which ensures proper synchronization
+between the microcontroller and the PC.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.841025" elapsed="0.000930"/>
+</test>
+<test id="s1-t5" name="Case5_Continuous_Transmission" line="50">
+<kw name="Create List" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.842982" level="INFO">${messages} = ['button_pressed', 'button_released', 'led_on', 'led_off']</msg>
+<var>${messages}</var>
+<arg>button_pressed</arg>
+<arg>button_released</arg>
+<arg>led_on</arg>
+<arg>led_off</arg>
+<doc>Returns a list containing given items.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.842876" elapsed="0.000125"/>
+</kw>
+<for flavor="IN">
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.843393" level="INFO">Sending message: button_pressed</msg>
+<arg>Sending message: ${msg}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.843302" elapsed="0.000123"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.843553" level="INFO">Length is 14.</msg>
+<arg>${msg}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.843480" elapsed="0.000100"/>
+</kw>
+<var name="${msg}">button_pressed</var>
+<status status="PASS" start="2025-10-19T13:20:23.843248" elapsed="0.000354"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.843791" level="INFO">Sending message: button_released</msg>
+<arg>Sending message: ${msg}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.843716" elapsed="0.000102"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.843933" level="INFO">Length is 15.</msg>
+<arg>${msg}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.843869" elapsed="0.000090"/>
+</kw>
+<var name="${msg}">button_released</var>
+<status status="PASS" start="2025-10-19T13:20:23.843671" elapsed="0.000309"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.844153" level="INFO">Sending message: led_on</msg>
+<arg>Sending message: ${msg}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.844085" elapsed="0.000094"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.844294" level="INFO">Length is 6.</msg>
+<arg>${msg}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.844231" elapsed="0.000095"/>
+</kw>
+<var name="${msg}">led_on</var>
+<status status="PASS" start="2025-10-19T13:20:23.844040" elapsed="0.000440"/>
+</iter>
+<iter>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.844713" level="INFO">Sending message: led_off</msg>
+<arg>Sending message: ${msg}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.844622" elapsed="0.000123"/>
+</kw>
+<kw name="Should Not Be Empty" owner="BuiltIn">
+<msg time="2025-10-19T13:20:23.844878" level="INFO">Length is 7.</msg>
+<arg>${msg}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.844805" elapsed="0.000100"/>
+</kw>
+<var name="${msg}">led_off</var>
+<status status="PASS" start="2025-10-19T13:20:23.844568" elapsed="0.000359"/>
+</iter>
+<var>${msg}</var>
+<value>@{messages}</value>
+<status status="PASS" start="2025-10-19T13:20:23.843096" elapsed="0.001854"/>
+</for>
+<doc>This test simulates a sequence of multiple UART transmissions occurring
+back-to-back without delay. It ensures that each transmitted message is valid
+and that no data is lost or interrupted during continuous operation.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.842443" elapsed="0.002644"/>
+</test>
+<doc>UART Automated Test Suite
+This suite validates UART communication between a PC and an ATmega328P (via Arduino Uno).
+It ensures correct data transmission and reception over the UART interface,
+as well as handling of invalid commands and continuous operation.</doc>
+<status status="PASS" start="2025-10-19T13:20:23.804694" elapsed="0.041013"/>
+</suite>
+<statistics>
+<total>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Uart Tests" id="s1" pass="5" fail="0" skip="0">Uart Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

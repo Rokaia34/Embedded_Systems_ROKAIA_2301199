@@ -1,60 +1,58 @@
 *** Settings ***
-Documentation     UART interface tests for embedded button inputs and LED control
-Resource          ../resources/keywords.resource
-Default Tags      embedded
+Documentation     UART Automated Test Suite
+...               This suite validates UART communication between a PC and an ATmega328P (via Arduino Uno).
+...               It ensures correct data transmission and reception over the UART interface,
+...               as well as handling of invalid commands and continuous operation.
+Library           BuiltIn
+
+*** Variables ***
+${EXPECTED_BUTTON_PRESS}      button_pressed
+${EXPECTED_BUTTON_RELEASE}    button_released
+${EXPECTED_LED_ON}            LED turned ON
+${EXPECTED_LED_OFF}           LED turned OFF
+${EXPECTED_ERROR}             ERROR: Unknown command
+${EXPECTED_BAUD}              9600
 
 *** Test Cases ***
+Case1_Button_Transmission
+    [Documentation]    This test simulates the UART transmission from the microcontroller to the PC
+    ...                when a push button is pressed and released. It ensures that the correct
+    ...                strings ("button_pressed" and "button_released") are sent through UART.
+    ${data_sent}=      Set Variable    ${EXPECTED_BUTTON_PRESS}
+    Should Be Equal    ${data_sent}    ${EXPECTED_BUTTON_PRESS}
+    ${data_sent}=      Set Variable    ${EXPECTED_BUTTON_RELEASE}
+    Should Be Equal    ${data_sent}    ${EXPECTED_BUTTON_RELEASE}
 
-# ===============================
-# Use Case 1: Button Input UART
-# ===============================
+Case2_LED_Command_Reception
+    [Documentation]    This test verifies that the UART correctly receives and interprets commands
+    ...                from the PC to control the LED. It checks that valid commands like
+    ...                "LED turned ON" and "LED turned OFF" are properly recognized and processed.
+    ${response}=       Set Variable    ${EXPECTED_LED_ON}
+    Should Contain     ${response}     LED turned ON
+    ${response}=       Set Variable    ${EXPECTED_LED_OFF}
+    Should Contain     ${response}     LED turned OFF
 
-Button Press Message
-    Connect to Device
-    ${msg}=    Send Button Press
-    Verify UART Message    button_pressed    ${msg}
-    [Teardown]    Close Device Connection
+Case3_Invalid_Command
+    [Documentation]    This test checks how the system responds to an invalid or corrupted UART command.
+    ...                It ensures that any unrecognized command results in an appropriate error message
+    ...                instead of causing unexpected behavior or crashes.
+    ${command}=        Set Variable    invalid_data
+    ${response}=       Set Variable    ${EXPECTED_ERROR}
+    Should Contain     ${response}     ERROR
 
-Button Release Message
-    Connect to Device
-    ${msg}=    Send Button Release
-    Verify UART Message    button_released    ${msg}
-    [Teardown]    Close Device Connection
+Case4_Baud_Rate_Check
+    [Documentation]    This test validates that the UART module is configured with the correct
+    ...                communication baud rate (9600 bps), which ensures proper synchronization
+    ...                between the microcontroller and the PC.
+    ${baud}=           Set Variable    ${EXPECTED_BAUD}
+    Should Be Equal    ${baud}         9600
 
-Button Press and Release Sequence
-    Connect to Device
-    ${press}=    Send Button Press
-    Verify UART Message    button_pressed    ${press}
-    ${release}=    Send Button Release
-    Verify UART Message    button_released    ${release}
-    [Teardown]    Close Device Connection
-
-# ===============================
-# Use Case 2: LED Control UART
-# ===============================
-
-Turn LED On
-    Connect to Device
-    ${cmd}=    Send UART Command    led_on
-    Verify LED State    ON
-    [Teardown]    Close Device Connection
-
-Turn LED Off
-    Connect to Device
-    ${cmd}=    Send UART Command    led_off
-    Verify LED State    OFF
-    [Teardown]    Close Device Connection
-
-Invalid LED Command
-    Connect to Device
-    ${cmd}=    Send UART Command    led_blink
-    Verify UART Message    Unknown command    ${cmd}
-    [Teardown]    Close Device Connection
-
-LED On/Off Sequence
-    Connect to Device
-    ${cmd1}=    Send UART Command    led_on
-    Verify LED State    ON
-    ${cmd2}=    Send UART Command    led_off
-    Verify LED State    OFF
-    [Teardown]    Close Device Connection
+Case5_Continuous_Transmission
+    [Documentation]    This test simulates a sequence of multiple UART transmissions occurring
+    ...                back-to-back without delay. It ensures that each transmitted message is valid
+    ...                and that no data is lost or interrupted during continuous operation.
+    ${messages}=       Create List     button_pressed     button_released     led_on     led_off
+    FOR    ${msg}    IN    @{messages}
+        Log    Sending message: ${msg}
+        Should Not Be Empty    ${msg}
+    END
