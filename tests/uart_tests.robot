@@ -3,7 +3,7 @@ Documentation     UART Automated Test Suite
 ...               This suite validates UART communication between a PC and an ATmega328P (via Arduino Uno).
 ...               It ensures correct data transmission and reception over the UART interface,
 ...               as well as handling of invalid commands and continuous operation.
-Library           BuiltIn
+
 
 *** Variables ***
 ${EXPECTED_BUTTON_PRESS}      button_pressed
