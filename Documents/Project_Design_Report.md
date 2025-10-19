@@ -34,14 +34,14 @@ Case 1: PD2 is set as an input pin since it’s connected to the button. Then, t
 Case 2: PB0 is set as an output pin since it’s connected to the Led. The system waits for characters that are manually being put through the terminal, using UART. When the character arrives, it gets stored in a buffer until a newline or return is received. Meanwhile, the buffer is getting checked for valid commands like led_on or led_off. If one of these commands is found in the buffer, the Led behaves as the command requests by directly setting or clearing the output pin. If the command isn’t valid, the system sends an error message.
 ```plantuml
 @startuml
-rectangle UartApp #orange {
+rectangle UartApp #white {
   rectangle Application
-    rectangle MCU #green {
+    rectangle MCU #pink {
         rectangle LED
         rectangle Button
     }
 
-    rectangle MCAL #skyblue {
+    rectangle MCAL #lightpink {
             rectangle ADC
             rectangle UART
             rectangle DIO
