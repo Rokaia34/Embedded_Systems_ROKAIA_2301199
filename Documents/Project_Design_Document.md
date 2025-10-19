@@ -100,7 +100,7 @@ This project consists of two modules. The first one reads the state of a push-bu
 
 | File name | Contents                             |
 |-----------|--------------------------------------|
-| main.c | located in src /each folder has it: Has Core logic and flow of code. Case 1, Case 2 and test1...test11 each have their own main.c file.     |
+| main.c | located in src /Has Core logic and flow of code. Case 1, Case 2   |
 | UART.h     |located in lib/UART folder: Defines functions for sending, receiving, and managing UART serial communication.        |
 | UART.c   | located in lib/UART folder: Implements the functions in UART.h for basic UART communication. |
 
